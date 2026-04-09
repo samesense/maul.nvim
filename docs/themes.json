@@ -1,4 +1,42 @@
 {
+  "maul": {
+    "core": {
+      "base": "#301010",
+      "surface0": "#603030",
+      "surface1": "#604040",
+      "surface2": "#586038",
+      "overlay0": "#687850",
+      "overlay1": "#b07878",
+      "overlay2": "#989060",
+      "text": "#eec6c5",
+      "subtext1": "#bdbd9d",
+      "subtext0": "#9dad74"
+    },
+    "accents": {
+      "red": [
+        "#f098a8",
+        "#f4ccd4",
+        "#f8d0d8",
+        "#f8c0c8",
+        "#f0c0c8"
+      ],
+      "warm": [
+        "#d2be69",
+        "#cfbe7e",
+        "#adc695"
+      ],
+      "cool": [
+        "#81c6e7",
+        "#82b6d1",
+        "#7ec7ea",
+        "#35bcee",
+        "#86c6ed"
+      ],
+      "bridge": [
+        "#cba6f7"
+      ]
+    }
+  },
   "maulCircle": {
     "core": {
       "base": "#082030",
