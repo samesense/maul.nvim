@@ -2,12 +2,12 @@
 
 [demo](https://samesense.github.io/maul.nvim/)
 
-> Neovim themes derived from Maul paintings
+> Neovim themes derived Maul: Shadow Lord images
 
 `maul.nvim` is a Neovim theme plugin built on top of  
 [catppuccin/nvim](https://github.com/catppuccin/nvim).
 
-It provides curated color palettes inspired by paintings from Maul and allows **runtime theme switching** via simple Neovim commands.
+It provides curated color palettes inspired by Maul: Shadow Lord and allows **runtime theme switching** via simple Neovim commands.
 
 This plugin does **not** define its own colorscheme. Instead, it dynamically configures Catppuccin using palette and highlight overrides.
 
@@ -89,7 +89,7 @@ Tab completion is supported:
 
 ## Available Themes
 
-Each theme corresponds to a palette inspired by a Maul painting:
+Each theme corresponds to a palette inspired by a Maul: Shadow Lord:
 
 - maulCircle
 - maulCircleDay
