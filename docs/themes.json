@@ -1,0 +1,116 @@
+{
+  "maulCircle": {
+    "core": {
+      "base": "#082030",
+      "surface0": "#484060",
+      "surface1": "#305068",
+      "surface2": "#106880",
+      "overlay0": "#607890",
+      "overlay1": "#7088a0",
+      "overlay2": "#28a8b0",
+      "text": "#aacaea",
+      "subtext1": "#29c2f2",
+      "subtext0": "#52b289"
+    },
+    "accents": {
+      "red": [
+        "#e89888",
+        "#d5818d",
+        "#c28a91",
+        "#b88e93",
+        "#b19194"
+      ],
+      "warm": [
+        "#58e008",
+        "#60e038",
+        "#a8e060"
+      ],
+      "cool": [
+        "#38d8f8",
+        "#00e0e0",
+        "#30e0d8",
+        "#18e0d8",
+        "#18e0e0"
+      ],
+      "bridge": [
+        "#c6a0f6"
+      ]
+    }
+  },
+  "maulCircleDay": {
+    "core": {
+      "base": "#102028",
+      "surface0": "#404830",
+      "surface1": "#205060",
+      "surface2": "#486070",
+      "overlay0": "#808060",
+      "overlay1": "#688898",
+      "overlay2": "#68a0a0",
+      "text": "#90d0e8",
+      "subtext1": "#d4ac8c",
+      "subtext0": "#89a98a"
+    },
+    "accents": {
+      "red": [
+        "#fbcacf",
+        "#f2a5af",
+        "#c79ba0",
+        "#bc9da0",
+        "#a89d9e"
+      ],
+      "warm": [
+        "#d0d878",
+        "#c8d070",
+        "#d8d880"
+      ],
+      "cool": [
+        "#78d0d0",
+        "#77c7d7",
+        "#88d8d0",
+        "#80d8d0",
+        "#70c0d0"
+      ],
+      "bridge": [
+        "#c6a0f6"
+      ]
+    }
+  },
+  "maulWall": {
+    "core": {
+      "base": "#183038",
+      "surface0": "#405068",
+      "surface1": "#385868",
+      "surface2": "#506878",
+      "overlay0": "#8080a0",
+      "overlay1": "#6890a0",
+      "overlay2": "#78a0c0",
+      "text": "#97cfe7",
+      "subtext1": "#7fbfd7",
+      "subtext0": "#67afbf"
+    },
+    "accents": {
+      "red": [
+        "#ea9fa6",
+        "#c9858c",
+        "#c9868c",
+        "#c7878c",
+        "#ba8c90"
+      ],
+      "warm": [
+        "#c9af6b",
+        "#c8af6c",
+        "#d3b977"
+      ],
+      "cool": [
+        "#60c0c8",
+        "#70b8f8",
+        "#50c0d0",
+        "#58c0c8",
+        "#78b8f8"
+      ],
+      "bridge": [
+        "#ca9ee6"
+      ]
+    }
+  }
+}

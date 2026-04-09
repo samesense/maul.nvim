@@ -1,0 +1,68 @@
+*maul.txt*  Neovim themes derived from Maul paintings
+
+==============================================================================
+CONTENTS                                                      *maul-contents*
+
+    1. Introduction ........................... |maul-introduction|
+    2. Requirements ........................... |maul-requirements|
+    3. Installation ........................... |maul-installation|
+    4. Usage .................................. |maul-usage|
+    5. Themes ................................. |maul-themes|
+
+==============================================================================
+INTRODUCTION                                              *maul-introduction*
+
+maul.nvim provides color palettes for Neovim that use catppuccin theme
+overrides to introduce new palettes inspired by Maul paintings.
+
+==============================================================================
+REQUIREMENTS                                              *maul-requirements*
+
+- Neovim >= 0.8.0
+- catppuccin/nvim theme
+
+==============================================================================
+INSTALLATION                                              *maul-installation*
+
+Using lazy.nvim: >
+
+    {
+      "samesense/maul.nvim",
+      dependencies = { "catppuccin/nvim" },
+    }
+<
+
+Using packer.nvim: >
+
+    use {
+      "samesense/maul.nvim",
+      requires = { "catppuccin/nvim" },
+    }
+<
+
+==============================================================================
+USAGE                                                            *maul-usage*
+
+Commands: >
+
+    :MaulList              " list available themes
+    :MaulLoad <theme>      " load a theme (tab completion supported)
+<
+
+Lua API: >
+
+    require("maul").setup()          -- optional, kept for API symmetry
+    require("maul").load("maulWall") -- load a theme
+<
+
+==============================================================================
+THEMES                                                          *maul-themes*
+
+maulCircle                                              *maul-theme-maulCircle*
+maulCircleDay                                        *maul-theme-maulCircleDay*
+maulWall                                                  *maul-theme-maulWall*
+
+All themes target the Catppuccin mocha flavour with custom palette overrides.
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:

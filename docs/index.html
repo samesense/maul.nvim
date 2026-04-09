@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Neovim Maul Theme Gallery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --bg: #0f0f14;
+      --panel: #181825;
+      --text: #cdd6f4;
+      --muted: #a6adc8;
+      --border: #313244;
+    }
+
+    body {
+      margin: 0;
+      padding: 2rem;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    h1 {
+      margin-top: 0;
+      margin-bottom: 2rem;
+      font-size: clamp(1.6rem, 2vw + 1rem, 2.4rem);
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      margin: -1.25rem 0 1.75rem 0;
+      font-size: 0.95rem;
+      color: var(--muted);
+      display: none;
+    }
+
+    .install {
+      margin: -1.25rem 0 1.25rem 0;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .install a {
+      color: inherit;
+    }
+
+    .theme {
+      margin-bottom: 3rem;
+      padding: 1.5rem;
+      background: var(--panel);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .theme h2 {
+      margin: 0 0 1rem 0;
+      font-size: clamp(1.2rem, 1.4vw + 0.8rem, 1.6rem);
+      line-height: 1.25;
+    }
+
+    /* 3-column layout: artwork | palettes | demo */
+    .theme-content {
+      display: grid;
+      grid-template-columns: minmax(180px, 220px) 1fr minmax(240px, 360px);
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .theme-media,
+    .theme-demo {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    /* Image container with border radius */
+    .zoom {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #0003;
+    }
+
+    .zoom img {
+      width: 100%;
+      display: block;
+    }
+
+    .zoom:focus-visible {
+      outline: 2px solid var(--muted);
+      outline-offset: 2px;
+    }
+
+    .theme-palettes {
+      min-width: 0;
+    }
+
+    .section {
+      margin-top: 1.25rem;
+    }
+
+    .section:first-child {
+      margin-top: 0;
+    }
+
+    .section h3 {
+      margin: 0 0 0.75rem 0;
+      font-size: 1rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .swatches {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .swatch {
+      width: clamp(64px, 8vw, 84px);
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .swatch-box {
+      width: 100%;
+      height: clamp(40px, 6vw, 52px);
+      border-radius: 8px;
+      border: 1px solid #0006;
+      margin-bottom: 0.3rem;
+    }
+
+    .hex {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+
+    /* Mobile fallback */
+    @media (max-width: 1100px) {
+      .theme-content {
+        grid-template-columns: minmax(160px, 220px) 1fr;
+      }
+
+      .theme-demo {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 900px) {
+      body {
+        padding: 1.25rem;
+      }
+
+      .theme-content {
+        grid-template-columns: 1fr;
+      }
+
+      .theme {
+        padding: 1.25rem;
+      }
+
+      .swatch {
+        width: clamp(60px, 16vw, 86px);
+      }
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+
+      .theme {
+        padding: 0.95rem;
+        margin-bottom: 2rem;
+      }
+
+      h1 {
+        margin-bottom: 1.25rem;
+        font-size: 1.6rem;
+      }
+
+      .subtitle {
+        display: block;
+        margin: -0.75rem 0 1.25rem 0;
+        font-size: 0.85rem;
+      }
+
+      .theme h2 {
+        margin-bottom: 0.75rem;
+        font-size: 1.15rem;
+      }
+
+      .section {
+        margin-top: 1rem;
+      }
+
+      .swatches {
+        gap: 0.5rem;
+      }
+
+      .swatch {
+        width: clamp(56px, 20vw, 80px);
+      }
+
+      .swatch-box {
+        height: clamp(36px, 10vw, 48px);
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <h1>Neovim Maul Theme Gallery</h1>
+  <p class="install">Install: <a href="https://github.com/samesense/maul.nvim">https://github.com/samesense/maul.nvim</a></p>
+  <p class="subtitle">Auto-generated theme gallery with palettes and screenshots.</p>
+
+  <div id="gallery">Loading…</div>
+
+  <script>
+    async function loadThemes() {
+      const res = await fetch("themes.json");
+      return await res.json();
+    }
+
+    function makeSwatch(hex, label = "") {
+      const wrap = document.createElement("div");
+      wrap.className = "swatch";
+
+      const box = document.createElement("div");
+      box.className = "swatch-box";
+      box.style.background = hex;
+
+      const hexLabel = document.createElement("div");
+      hexLabel.className = "hex";
+      hexLabel.textContent = hex;
+
+      wrap.appendChild(box);
+      if (label) {
+        const name = document.createElement("div");
+        name.textContent = label;
+        wrap.appendChild(name);
+      }
+      wrap.appendChild(hexLabel);
+
+      return wrap;
+    }
+
+    function makeZoomImage(src, alt, onMissingRemoveEl) {
+      const link = document.createElement("a");
+      link.className = "zoom";
+      link.href = src;
+      link.setAttribute("aria-label", `${alt} (open image)`);
+
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = alt;
+      img.loading = "lazy";
+      img.onerror = () => onMissingRemoveEl?.remove();
+
+      link.appendChild(img);
+      return link;
+    }
+
+    function renderTheme(name, theme) {
+      const container = document.createElement("div");
+      container.className = "theme";
+
+      const title = document.createElement("h2");
+      title.textContent = name;
+      container.appendChild(title);
+
+      const content = document.createElement("div");
+      content.className = "theme-content";
+
+      /* Left: artwork (photos/) */
+      const media = document.createElement("div");
+      media.className = "theme-media";
+
+      const art = makeZoomImage(`photos/${name}.png`, `${name} source image`, media);
+      media.appendChild(art);
+      content.appendChild(media);
+
+      /* Center: palettes */
+      const palettes = document.createElement("div");
+      palettes.className = "theme-palettes";
+
+      if (theme.core && Object.keys(theme.core).length) {
+        const section = document.createElement("div");
+        section.className = "section";
+
+        const h = document.createElement("h3");
+        h.textContent = "Core UI";
+        section.appendChild(h);
+
+        const row = document.createElement("div");
+        row.className = "swatches";
+
+        for (const [k, hex] of Object.entries(theme.core)) {
+          row.appendChild(makeSwatch(hex, k));
+        }
+
+        section.appendChild(row);
+        palettes.appendChild(section);
+      }
+
+      if (theme.accents && Object.keys(theme.accents).length) {
+        const section = document.createElement("div");
+        section.className = "section";
+
+        const h = document.createElement("h3");
+        h.textContent = "Accents";
+        section.appendChild(h);
+
+        const row = document.createElement("div");
+        row.className = "swatches";
+
+        for (const [group, colors] of Object.entries(theme.accents)) {
+          for (const hex of colors) {
+            row.appendChild(makeSwatch(hex, group));
+          }
+        }
+
+        section.appendChild(row);
+        palettes.appendChild(section);
+      }
+
+      content.appendChild(palettes);
+
+      /* Right: Neovim demo screenshot (demo/) */
+      const demoWrap = document.createElement("div");
+      demoWrap.className = "theme-demo";
+
+      const demo = makeZoomImage(`demo/${name}.png`, `${name} Neovim screenshot`, demoWrap);
+      demoWrap.appendChild(demo);
+      content.appendChild(demoWrap);
+
+      container.appendChild(content);
+      return container;
+    }
+
+    async function main() {
+      const gallery = document.getElementById("gallery");
+      gallery.textContent = "";
+
+      const themes = await loadThemes();
+
+      for (const [name, theme] of Object.entries(themes)) {
+        gallery.appendChild(renderTheme(name, theme));
+      }
+    }
+
+    main();
+  </script>
+
+</body>
+</html>
